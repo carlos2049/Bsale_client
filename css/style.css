@@ -1,6 +1,6 @@
 * {
-  /* margin: 0; */
-  /* padding: 0; */
+  margin: 0;
+  padding: 0;
   /* color: rgb(247, 246, 241); */
 
   box-sizing: border-box;
@@ -55,6 +55,45 @@ nav ul .search-icon input {
   border: none;
   border-radius: 5px 0 0 5px;
 }
+
+.categoriesId ul {
+  list-style: none;
+}
+
+.categoriesId ul li a {
+  text-decoration: none;
+}
+
+.categoriesId ul li {
+  background-color: #8e44ad;
+  border: solid 1px black;
+  width: 150px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  float: left;
+  color: white;
+  font-size: 19px;
+}
+
+.categoriesId ul li:hover {
+
+  background-color: #85c1e9;
+}
+
+.categoriesId ul ul {
+  display: none;
+}
+
+.categoriesId ul li:hover>ul {
+  display: block;
+  position: relative;
+}
+
+/* a {
+  font-size: 100px;
+  text-transform: uppercase;
+} */
 
 body {
   background-color: rgb(247, 246, 241);

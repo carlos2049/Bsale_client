@@ -11,7 +11,20 @@
   <nav>
     <ul>
       <li class="logo">Bsale Test</li>
-
+      <li>
+        <div class="categoriesId">
+          <ul>
+            <li>categorias
+              <ul>
+                <li value="1"><a href="#">categoria 1</a></li>
+                <li value="2"><a href="#">categoria 1</a></li>
+                <li value="3"><a href="#">categoria 1</a></li>
+                <li value="4"><a href="#">categoria 1</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </li> 
       <li class="search-icon">
         <input type="s" placeholder="search">
         <span class="fas fa-search" ></span>
@@ -26,84 +39,17 @@
     <div class="overlay"></div>
     <div class="content">
       <div class="close-btn"  onclick="togglePopuup()" >&times;</div>
-      <div class="shopping-cart-container">
-        <!-- <div class="row">
-          <div class="columnas">
-            <div>
-              <img src="" alt="">
-              <h6>jiii</h6>
-            </div>
-          </div>
-          <div class="columnas">
-            <div>
-             <p></p>
-            </div>
-          </div>
-          <div class="columnas">
-            <div>
-             <input type="number">
-             <button type="button" ></button>
-            </div>
-          </div>
-        </div> -->
-        
+      <div class="shoppingCartItemsContainer">
     
       </div>
       <div class="shopping-Cart-total"> TOTAL $ 0 </div>
+      <div class="comprarButton"> <button type="button" > comprar</button> </div>
     </div>
 
   </div>
 
-
-  <!-- <input type="button" value="Genera una tabla" onclick="genera_tabla()">
-  <input type="button" value="Genera un div" onclick="crear_div(1)">
-
-  <div id="div1">El texto superior se ha creado dinámicamente.</div> -->
-  <div class="main" id="main" >
-    <!-- <div class="card" id="card">
-      <div class="product-name" id="productName">nombre producto</div>
-      <div class="size-image" id="sizeImage">
-        <img src="img/8459347_1.jfif" alt="" class="image">
-      </div>
-      <div class="price" id="price"> $3500 </div>
-      <div class="add" id="add">
-        <button class="button">agregar</button>
-      </div>
-    </div>  
-    <div class="card" id="">
-      <div class="product-name" id="productName">nombre producto</div>
-      <div class="size-image" id="sizeImage">
-        <img src="img/8459347_1.jfif" alt="" class="image">
-      </div>
-      <div class="price" id="price"> $3500 </div>
-      <div class="add" id="add">
-        <button class="button">agregar</button>
-      </div>
-    </div>   -->
-  <div>
-  <div class="shopping-cart-container">
-    <!-- <div class="row">
-      <div class="columnas">
-        <div>
-          <img src="" alt="">
-          <h6>jiii</h6>
-        </div>
-      </div>
-      <div class="columnas">
-        <div>
-         <p></p>
-        </div>
-      </div>
-      <div class="columnas">
-        <div>
-         <input type="number">
-         <button type="button" ></button>
-        </div>
-      </div>
-    </div> -->
-    
-
-  </div>
+  <div class="main" id="main" ><div>
+  <div class="shopping-cart-container shoppingCartItemsContainer"></div>
 
   <script src="js/index.js" ></script>
 

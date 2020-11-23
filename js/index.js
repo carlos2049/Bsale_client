@@ -1,7 +1,3 @@
-
-
-
-
 document.addEventListener("DOMContentLoaded", function (){
   fetching()
   .then(result => {
@@ -9,18 +5,31 @@ document.addEventListener("DOMContentLoaded", function (){
       createCard(element)
     });
     // createCard(result)
-  jii()
+    listenButtonProduct()
+    buy()
+    category()
   });
   
 })
-const shoppingCart = document.querySelector('.shopping-cart-container')
+const shoppingCartItemsContainer = document.querySelector('.shoppingCartItemsContainer')
 
-
-function jii (){
+function listenButtonProduct (){
   const addToCard = document.querySelectorAll('.button');
   addToCard.forEach((add) => {
-    add.addEventListener('click', addCartClick)
+    add.addEventListener('click', addCartClick);
   })
+}
+
+function category() {
+  const category = document.querySelector('.categoriesId')
+  category.addEventListener('click', (e)=> console.log(e.target))
+}
+
+
+
+function buy (){
+  const comprarButton = document.querySelector('.comprarButton')
+  comprarButton.addEventListener('click', ()=> console.log('click'))
 }
 
 function addCartClick(e){
@@ -35,14 +44,26 @@ function addCartClick(e){
 }
 
 function addItemToShopCart(textProductName, textImage, textPrice){
-  // console.log(textProductName)
+
+  // console.log(shoppingCartItemsContainer)
+  const elementsTitle = shoppingCartItemsContainer.getElementsByClassName('shoppingCartItemTitle');  
+
+  for(let i = 0 ; i < elementsTitle.length ; i++){
+    if( elementsTitle[i].innerText === textProductName){
+      let elementQuantity = elementsTitle[i].parentElement.parentElement.parentElement.querySelector('.shoppingCartItemQuantity');
+      elementQuantity.value++;
+      shoppingCartTotal()
+      return
+    }
+  }
+
   const shoppingCartRow = document.createElement('div');
   const shoppingCartContent = `
     <div class="row shoppingCartItem">
       <div class="columnas">
         <div>
           <img class="popup-shopCart" src="${textImage}" alt="">
-          <h6> ${textProductName} </h6>
+          <h6 class="shoppingCartItemTitle" > ${textProductName} </h6>
         </div>
       </div>
       <div class="columnas">
@@ -52,16 +73,16 @@ function addItemToShopCart(textProductName, textImage, textPrice){
       </div>
       <div class="columnas">
         <div>
-        <input type="number" class="shoppingCartItemQuantity" value="1">
-        <button type="button" class="button-delete" > eliminar</button>
+          <input type="number" class="shoppingCartItemQuantity" value="1">
+          <button type="button" class="button-delete" > eliminar</button>
         </div>
       </div>
     </div>
   `;
   shoppingCartRow.innerHTML = shoppingCartContent;
-  shoppingCart.append(shoppingCartRow);
+  shoppingCartItemsContainer.append(shoppingCartRow);
   shoppingCartRow.querySelector('.button-delete').addEventListener('click', removeShoppingCartItem);
-  shoppingCartRow.querySelector('.shoppingCartItemQuantity').addEventListener('change', ()=> console.log('change'))
+  shoppingCartRow.querySelector('.shoppingCartItemQuantity').addEventListener('change', quantityChanged)
 
   shoppingCartTotal();
 }
@@ -70,8 +91,14 @@ function removeShoppingCartItem(e){
   const buttonClick = e.target;
   buttonClick.closest('.shoppingCartItem').remove();
   shoppingCartTotal()
-  console.log(buttonClick)
 
+}
+
+function quantityChanged(e){
+
+  const input = e.target;
+  input.value <= 0 ? input.value = 1 : null
+  shoppingCartTotal()
 }
 
 
@@ -89,7 +116,6 @@ function shoppingCartTotal (){
     total = total + shoppingCartItemQuantity * shoppingCartPrice
   })
   shoppingCartTotalLabel.innerHTML = `TOTAL $ ${total}`
-  console.log(total)
 }
 
 function createCard(result){
@@ -137,7 +163,7 @@ function createCard(result){
 }
 
  function fetching ()  {
-   return fetch('http://localhost:2000/api/products/1')
+   return fetch('http://localhost:2000/api/products/2')
   .then((response) => {
     return response.json();
   })
@@ -145,45 +171,6 @@ function createCard(result){
 }
 
 
-
-function crear_div(){
-
-  const div = document.getElementById("main")
-
-  const card1 = document.createElement("div");
-  card1.className = "card";
-  for (var i = 0; i < 3; i++) {
-
-    const card2 = document.createElement("div");
-    const productName = document.createElement("div");
-    const sizeImage = document.createElement("div");
-    const price = document.createElement("div");
-    const add = document.createElement("div");
-
-    card2.className = "card";
-    productName.className = "product-name";
-    sizeImage.className = "size-image";
-    price.className = "price";
-    add.className = "add";
-
-    var textproductName = document.createTextNode("nombre producto ");
-    var textsizeImage = document.createTextNode("image");
-    var textprice = document.createTextNode("price");
-    var textadd = document.createTextNode("add");
-    productName.appendChild(textproductName);
-    sizeImage.appendChild(textsizeImage);
-    price.appendChild(textprice);
-    add.appendChild(textadd);
-    
-    card2.appendChild(productName)
-    card2.appendChild(sizeImage)
-    card2.appendChild(price)
-    card2.appendChild(add)
-    div.appendChild(card2)
-  }
-
-  // div.appendChild(card1)
-}
 
 function togglePopuup(){
   document.getElementById("popup-1").classList.toggle("active")
