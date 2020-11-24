@@ -56,16 +56,25 @@ nav ul .search-icon input {
   border-radius: 5px 0 0 5px;
 }
 
+.categoriesId {
+  margin-right: 20px;
+}
+
 .categoriesId ul {
   list-style: none;
 }
 
 .categoriesId ul li a {
+  color: white;
   text-decoration: none;
 }
 
+.categoriesId ul li a:hover {
+  color: yellow;
+}
+
 .categoriesId ul li {
-  background-color: #8e44ad;
+  background-color: #09000e;
   border: solid 1px black;
   width: 150px;
   height: 50px;
@@ -78,7 +87,7 @@ nav ul .search-icon input {
 
 .categoriesId ul li:hover {
 
-  background-color: #85c1e9;
+  background-color: #172c38;
 }
 
 .categoriesId ul ul {

@@ -1,28 +1,33 @@
 document.addEventListener("DOMContentLoaded", function (){
-  fetching()
-  .then(result => {
-    result.forEach(element => {
-      createCard(element)
-    });
+  // fetching(e)
+  // consiole.log(e)
+  // .then(result => {
+  //   result.forEach(element => {
+  //     createCard(element)
+  //   });
     // createCard(result)
-    listenButtonProduct()
+    // listenButtonProduct()
     buy()
-    category()
+    // category()
   });
-  
-})
+
 const shoppingCartItemsContainer = document.querySelector('.shoppingCartItemsContainer')
 
 function listenButtonProduct (){
+
   const addToCard = document.querySelectorAll('.button');
   addToCard.forEach((add) => {
+
     add.addEventListener('click', addCartClick);
   })
 }
 
-function category() {
-  const category = document.querySelector('.categoriesId')
-  category.addEventListener('click', (e)=> console.log(e.target))
+function category(e) {
+    const main = document.getElementById("main")
+    main.innerHTML = '';
+    const categories = e.getAttribute("data-category")
+    fetching(categories)
+
 }
 
 
@@ -120,6 +125,9 @@ function shoppingCartTotal (){
 
 function createCard(result){
   const main = document.getElementById("main")
+  const getcard =document.getElementsByClassName('card')
+  // getcard.closest.remove()
+  // console.log(getcard)
 
   const card = document.createElement("div");
 
@@ -162,11 +170,18 @@ function createCard(result){
 
 }
 
- function fetching ()  {
-   return fetch('http://localhost:2000/api/products/2')
+ function fetching (id)  {
+   return fetch(`http://localhost:2000/api/products/${id}`)
   .then((response) => {
     return response.json();
   })
+  .then(result => {
+    result.forEach(element => {
+
+      createCard(element)
+    });
+    listenButtonProduct()
+  });
 
 }
 
