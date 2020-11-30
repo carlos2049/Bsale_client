@@ -50,13 +50,13 @@ function addCartClick(e){
 
 function addItemToShopCart(textProductName, textImage, textPrice){
 
-  // console.log(shoppingCartItemsContainer)
   const elementsTitle = shoppingCartItemsContainer.getElementsByClassName('shoppingCartItemTitle');  
 
   for(let i = 0 ; i < elementsTitle.length ; i++){
     if( elementsTitle[i].innerText === textProductName){
       let elementQuantity = elementsTitle[i].parentElement.parentElement.parentElement.querySelector('.shoppingCartItemQuantity');
       elementQuantity.value++;
+      console.log(elementQuantity)
       shoppingCartTotal()
       return
     }

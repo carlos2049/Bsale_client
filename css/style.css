@@ -21,18 +21,30 @@ nav ul {
   list-style: none;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
 }
 
 nav ul li.logo {
-  flex: 1;
+  /* flex: 1; */
   font-size: 30px;
   font-weight: 700;
+  /* border: solid white 1px; */
+  width: 200px;
+  margin-right: 5%;
+}
+
+nav ul li.li_1 {
+  margin-right: 5%;
 }
 
 nav ul div.items {
   padding: 0 25px;
   display: inline-flex;
+}
+
+nav ul div.items button {
+  height: 40px;
+  width: 60px;
 }
 
 /* nav ul div.items a {
@@ -43,7 +55,7 @@ nav ul div.items {
 
 nav ul .search-icon {
   height: 30px;
-  width: 340px;
+  width: 50%;
   display: flex;
   background: #f2f2f2;
   border-radius: 5px;
@@ -51,13 +63,14 @@ nav ul .search-icon {
 
 nav ul .search-icon input {
   height: 100%;
-  width: 300px;
+  width: 90%;
   border: none;
   border-radius: 5px 0 0 5px;
 }
 
 .categoriesId {
   margin-right: 20px;
+  margin-left: 5%;
 }
 
 .categoriesId ul {
@@ -235,6 +248,7 @@ body {
 .row {
   display: flex;
   border: solid 1px black;
+  align-items: center;
 }
 
 .popup-shopCart {
