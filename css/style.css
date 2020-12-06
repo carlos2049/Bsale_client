@@ -245,13 +245,53 @@ body {
   height: 30px;
 }
 
+
+
+/* modal */
+
+.title-products h3 {
+  width: 20%;
+}
+
+.title-products {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 .row {
   display: flex;
-  border: solid 1px black;
+  /* border: solid 1px black; */
   align-items: center;
+}
+
+.columnas {
+  width: 25%;
 }
 
 .popup-shopCart {
   width: 50px;
   height: 50px;
+}
+
+.column-product {
+  width: 100%;
+  justify-items: center;
+}
+
+
+.shoppingCartItemQuantity {
+  width: 50px;
+}
+
+.columna_quantityAndDelete {
+  width: 50%;
+
+}
+
+
+.quantityAndDelete {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }

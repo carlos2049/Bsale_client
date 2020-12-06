@@ -51,12 +51,16 @@ function addCartClick(e){
 function addItemToShopCart(textProductName, textImage, textPrice){
 
   const elementsTitle = shoppingCartItemsContainer.getElementsByClassName('shoppingCartItemTitle');  
-
+  // console.log(textProductName)
+  // console.log(elementsTitle)
   for(let i = 0 ; i < elementsTitle.length ; i++){
+
+    console.log(elementsTitle[i].innerText)
     if( elementsTitle[i].innerText === textProductName){
       let elementQuantity = elementsTitle[i].parentElement.parentElement.parentElement.querySelector('.shoppingCartItemQuantity');
-      elementQuantity.value++;
       console.log(elementQuantity)
+      elementQuantity.value++;
+      // console.log(elementQuantity)
       shoppingCartTotal()
       return
     }
@@ -66,7 +70,7 @@ function addItemToShopCart(textProductName, textImage, textPrice){
   const shoppingCartContent = `
     <div class="row shoppingCartItem">
       <div class="columnas">
-        <div>
+        <div class="column-product">
           <img class="popup-shopCart" src="${textImage}" alt="">
           <h6 class="shoppingCartItemTitle" > ${textProductName} </h6>
         </div>
@@ -76,10 +80,10 @@ function addItemToShopCart(textProductName, textImage, textPrice){
         <p class="shoppingCartPrice" > ${textPrice} </p>
         </div>
       </div>
-      <div class="columnas">
-        <div>
-          <input type="number" class="shoppingCartItemQuantity" value="1">
-          <button type="button" class="button-delete" > eliminar</button>
+      <div class="columna_quantityAndDelete">
+        <div class="quantityAndDelete">
+        <input type="number" class="shoppingCartItemQuantity" value="1">
+        <button type="button" class="button-delete" > eliminar</button>
         </div>
       </div>
     </div>
