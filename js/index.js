@@ -51,16 +51,12 @@ function addCartClick(e){
 function addItemToShopCart(textProductName, textImage, textPrice){
 
   const elementsTitle = shoppingCartItemsContainer.getElementsByClassName('shoppingCartItemTitle');  
-  // console.log(textProductName)
-  // console.log(elementsTitle)
+
   for(let i = 0 ; i < elementsTitle.length ; i++){
 
-    console.log(elementsTitle[i].innerText)
-    if( elementsTitle[i].innerText === textProductName){
+    if( elementsTitle[i].innerText === textProductName.trim()){
       let elementQuantity = elementsTitle[i].parentElement.parentElement.parentElement.querySelector('.shoppingCartItemQuantity');
-      console.log(elementQuantity)
       elementQuantity.value++;
-      // console.log(elementQuantity)
       shoppingCartTotal()
       return
     }
