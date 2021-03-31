@@ -9,7 +9,8 @@ const fragment = document.createDocumentFragment();
 let carrito = {};
 
 document.addEventListener('DOMContentLoaded', function () {
-  fetching(1);
+  // fetching(e)
+  // fetching(1);
   if (localStorage.getItem('carrito')) {
     carrito = JSON.parse(localStorage.getItem('carrito'));
     pintarCarrito();
@@ -123,17 +124,25 @@ const vaciarCarrito = () => {
   });
 };
 
-function listenButtonProduct() {
-  const addToCard = document.querySelectorAll('.button');
-  addToCard.forEach((add) => {
-    add.addEventListener('click', addCartClick);
-  });
-}
+const showCard = (data) => {};
+
+const shoppingCartItemsContainer = document.querySelector(
+  '.shoppingCartItemsContainer',
+);
+
+// function listenButtonProduct() {
+//   const addToCard = document.querySelectorAll('.button');
+//   addToCard.forEach((add) => {
+//     add.addEventListener('click', addCartClick);
+//   });
+// }
 
 function category(e) {
   const main = document.getElementById('main');
-  main.innerHTML = '';
+  // main.innerHTML = '';
   const categories = e.getAttribute('data-category');
+  // console.log(categories);
+
   fetching(categories);
 }
 
@@ -297,6 +306,7 @@ function createCard(result) {
 }
 
 const fetching = async (id) => {
+  console.log(id);
   // return fetch(`http://localhost:2000/api/products/${id}`)
   //   .then((response) => {
   //     return response.json();
@@ -311,7 +321,8 @@ const fetching = async (id) => {
   try {
     const res = await fetch(`http://localhost:2000/api/products/${id}`);
     const data = await res.json();
-    // console.log(data);
+    console.log(data);
+    cards.innerHTML = '';
     data.forEach((element) => {
       templateCard.querySelector('h5').textContent = element.name;
       templateCard.querySelector('p').textContent = element.price;
@@ -322,7 +333,7 @@ const fetching = async (id) => {
       fragment.appendChild(clone);
     });
     cards.appendChild(fragment);
-    listenButtonProduct();
+    // listenButtonProduct();
     return data;
   } catch (error) {
     console.log(error);
