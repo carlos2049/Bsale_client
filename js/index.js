@@ -47,8 +47,6 @@ const btnAccion = (e) => {
 };
 
 const addToCard = (e) => {
-  // console.log(e.target);
-  // console.log(e.target.classList.contains('btn-dark'));
   if (e.target.classList.contains('btn-dark')) {
     setCarrito(e.target.parentElement);
   }
@@ -124,19 +122,6 @@ const vaciarCarrito = () => {
   });
 };
 
-const showCard = (data) => {};
-
-const shoppingCartItemsContainer = document.querySelector(
-  '.shoppingCartItemsContainer',
-);
-
-// function listenButtonProduct() {
-//   const addToCard = document.querySelectorAll('.button');
-//   addToCard.forEach((add) => {
-//     add.addEventListener('click', addCartClick);
-//   });
-// }
-
 function category(e) {
   const main = document.getElementById('main');
   // main.innerHTML = '';
@@ -146,194 +131,36 @@ function category(e) {
   fetching(categories);
 }
 
-function buy() {
-  const comprarButton = document.querySelector('.comprarButton');
-  comprarButton.addEventListener('click', () => console.log('click'));
-}
-
-function addCartClick(e) {
-  const button = e.target;
-  const card = button.closest('.card');
-  const textProductName = card.querySelector('.product-name').textContent;
-  const textImage = card.querySelector('.image').src;
-  const textPrice = card.querySelector('.price').textContent;
-
-  addItemToShopCart(textProductName, textImage, textPrice);
-}
-
-function addItemToShopCart(textProductName, textImage, textPrice) {
-  const elementsTitle = shoppingCartItemsContainer.getElementsByClassName(
-    'shoppingCartItemTitle',
-  );
-
-  for (let i = 0; i < elementsTitle.length; i++) {
-    if (elementsTitle[i].innerText === textProductName.trim()) {
-      let elementQuantity = elementsTitle[
-        i
-      ].parentElement.parentElement.parentElement.querySelector(
-        '.shoppingCartItemQuantity',
-      );
-      elementQuantity.value++;
-      shoppingCartTotal();
-      return;
-    }
-  }
-
-  const shoppingCartRow = document.createElement('div');
-  const shoppingCartContent = `
-    <div class="row shoppingCartItem">
-      <div class="columnas">
-        <div class="column-product">
-          <img class="popup-shopCart" src="${textImage}" alt="">
-          <h6 class="shoppingCartItemTitle" > ${textProductName} </h6>
-        </div>
-      </div>
-      <div class="columnas">
-        <div >
-        <p class="shoppingCartPrice" > ${textPrice} </p>
-        </div>
-      </div>
-      <div class="columna_quantityAndDelete">
-        <div class="quantityAndDelete">
-        <input type="number" class="shoppingCartItemQuantity" value="1">
-        <button type="button" class="button-delete" > eliminar</button>
-        </div>
-      </div>
-    </div>
-  `;
-  shoppingCartRow.innerHTML = shoppingCartContent;
-  shoppingCartItemsContainer.append(shoppingCartRow);
-  shoppingCartRow
-    .querySelector('.button-delete')
-    .addEventListener('click', removeShoppingCartItem);
-  shoppingCartRow
-    .querySelector('.shoppingCartItemQuantity')
-    .addEventListener('change', quantityChanged);
-
-  shoppingCartTotal();
-}
-
-function removeShoppingCartItem(e) {
-  const buttonClick = e.target;
-  buttonClick.closest('.shoppingCartItem').remove();
-  shoppingCartTotal();
-}
-
-function quantityChanged(e) {
-  const input = e.target;
-  input.value <= 0 ? (input.value = 1) : null;
-  shoppingCartTotal();
-}
-
-function shoppingCartTotal() {
-  let total = 0;
-  const shoppingCartTotalLabel = document.querySelector('.shopping-Cart-total');
-  const shoppingCartItem = document.querySelectorAll('.shoppingCartItem');
-
-  shoppingCartItem.forEach((item) => {
-    const shoppingCartPriceElement = item.querySelector('.shoppingCartPrice');
-    const shoppingCartPrice = Number(
-      shoppingCartPriceElement.textContent.replace('$', ''),
-    );
-    const shoppingCartItemQuantityElement = item.querySelector(
-      '.shoppingCartItemQuantity',
-    );
-    const shoppingCartItemQuantity = Number(
-      shoppingCartItemQuantityElement.value,
-    );
-    total = total + shoppingCartItemQuantity * shoppingCartPrice;
-  });
-  shoppingCartTotalLabel.innerHTML = `TOTAL $ ${total}`;
-}
-
-function createCard(result) {
-  const main = document.getElementById('main');
-  const getcard = document.getElementsByClassName('card');
-  // getcard.closest.remove()
-  // console.log(getcard)
-
-  const tamplate = `
-    <div class="card">
-    <div class="product-name">
-    
-    </div>
-    <div class="size-image"></div>
-    <div class="price"></div>
-    <div class="add">
-      <button></button>
-    </div>
-    </div>
-   
-  `;
-  const card = document.createElement('div');
-  const productName = document.createElement('div');
-  const sizeImage = document.createElement('div');
-  const price = document.createElement('div');
-  const add = document.createElement('div');
-
-  const image = document.createElement('img');
-  const addButton = document.createElement('button');
-  sizeImage.appendChild(image);
-  add.appendChild(addButton);
-
-  card.className = 'card';
-  productName.className = 'product-name';
-  sizeImage.className = 'size-image';
-  image.className = 'image';
-  image.src = result.url_image
-    ? result.url_image
-    : 'https://via.placeholder.com/150x150.png?text=Visit+WhoIsHostingThis.com+Buyers+Guide';
-  price.className = 'price';
-  add.className = 'add';
-  addButton.className = 'button';
-
-  var textproductName = document.createTextNode(result.name);
-  // var textsizeImage = document.createTextNode("");
-  // var textImage = document.createTextNode("image")
-  var textprice = document.createTextNode(`$ ${result.price}`);
-  var textadd = document.createTextNode('agregar');
-
-  productName.appendChild(textproductName);
-  // sizeImage.appendChild(textsizeImage);
-  price.appendChild(textprice);
-  addButton.appendChild(textadd);
-
-  card.appendChild(productName);
-  card.appendChild(sizeImage);
-  card.appendChild(price);
-  card.appendChild(add);
-  main.appendChild(card);
-}
-
 const fetching = async (id) => {
   console.log(id);
-  // return fetch(`http://localhost:2000/api/products/${id}`)
-  //   .then((response) => {
-  //     return response.json();
-  //   })
-  //   .then((result) => {
-  //     result.forEach((element) => {
-  //       createCard(element);
-  //     });
-  //     listenButtonProduct();
-  //   });
 
   try {
-    const res = await fetch(`http://localhost:2000/api/products/${id}`);
+    const res = await fetch(
+      `https://bsale-test2.herokuapp.com/api/products/${id}`,
+      {
+        // method: 'GET', // *GET, POST, PUT, DELETE, etc.
+        // mode: 'cors', // no-cors, *cors, same-origin
+        // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        // credentials: 'same-origin', // include, *same-origin, omit
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        method: 'GET',
+      },
+    );
     const data = await res.json();
     console.log(data);
     cards.innerHTML = '';
     data.forEach((element) => {
       templateCard.querySelector('h5').textContent = element.name;
-      templateCard.querySelector('p').textContent = element.price;
+      templateCard.querySelector('p').textContent = `$ ${element.price}`;
       templateCard.querySelector('img').setAttribute('src', element.url_image);
       templateCard.querySelector('.btn-dark').dataset.id = element.id;
-      // createCard(element);
       const clone = templateCard.cloneNode(true);
       fragment.appendChild(clone);
     });
     cards.appendChild(fragment);
-    // listenButtonProduct();
     return data;
   } catch (error) {
     console.log(error);

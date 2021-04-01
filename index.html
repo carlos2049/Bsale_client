@@ -35,68 +35,16 @@
           </li>
      
         </ul>
-        <form class="d-flex">
+        <div class="d-flex">
           <button class="btn btn-dark btn-lg" onclick="togglePopuup()">carrito</button>
 
           <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Buscar</button>
-        </form>
+        </div>
       </div>
     </div>
   </nav>
-  <!-- <nav>
-    <ul> -->
-      <!-- <li class="logo">Bsale Test</li>
-      <li class="li_1"> -->
-        <!-- <div class="categoriesId">
-          <ul>
-            <li>categorias
-              <ul>
-                <li ><a data-category="1" onclick="category(this)" href="#">Bebidas Energeticas </a></li>
-                <li ><a data-category="2"  onclick="category(this)" href="#">Pisco</a></li>
-                <li ><a data-category="3"  onclick="category(this)" href="#">Ron</a></li>
-                <li ><a data-category="4"  onclick="category(this)" href="#">Bebida</a></li>
-                <li ><a data-category="5"  onclick="category(this)" href="#">Snack</a></li>
-                <li ><a data-category="6"  onclick="category(this)" href="#">cerveza</a></li>
-                <li ><a data-category="7"  onclick="category(this)" href="#">vodka</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div> -->
-      <!-- </li>  -->
-      <!-- <li class="search-icon">
-        <input type="s" placeholder="search">
-        <span class="fas fa-search" ></span>
-      </li> -->
-      <!-- <div class="items">
-        <button onclick="togglePopuup()">carrito</button>
-      </div> -->
-    <!-- </ul>
-  </nav> -->
-
-  <!-- <div class="popup" id="popup-1">
-    <div class="overlay"></div>
-    <div class="content">
-      <div class="close-btn"  onclick="togglePopuup()" >&times;</div>
-      <div class="title-products">
-        
-        <h3>Producto</h3>
-        <h3>Precio</h3>
-        <h3>Cantidad</h3>
-        <h3></h3>
-        
-      </div>
-      <hr>
-      <div class="shoppingCartItemsContainer">
-    
-      </div>
-      <hr>
-      <div class="shopping-Cart-total"> TOTAL $ 0 </div>
-      <div class="comprarButton"> <button type="button" > comprar</button> </div>
-    </div>
-
-  </div> -->
-
+  
   <div class="container">
     <!-- <h1>carrito</h1> -->
     <hr>
@@ -104,29 +52,28 @@
   </div>
 
   <!-- <template id="template-table"> -->
-    <div class="popup"  id="popup-1">
-      <div class="content">
+  <div class="popup"  id="popup-1">
+    <div class="content">
       <div class="close-btn"  onclick="togglePopuup()" >&times;</div>
-
-    <table class="table ">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Item</th>
-          <th scope="col">Cantidad</th>
-          <th scope="col">Accion</th>
-          <th scope="col">Total</th>
-        </tr>
-      </thead>
-      <tbody id="items"></tbody>
-      <tfoot>
-        <tr id="footer">
-          <th scope="row" colspan="5">Carrito vacio</th>
-        </tr>
-      </tfoot>
-    </table>
+      <table class="table ">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Item</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Accion</th>
+            <th scope="col">Total</th>
+          </tr>
+        </thead>
+        <tbody id="items"></tbody>
+        <tfoot>
+          <tr id="footer">
+            <th scope="row" colspan="5">Carrito vacio</th>
+          </tr>
+        </tfoot>
+      </table>
     </div>
-    </div>
+  </div>
   <!-- </template> -->
   
 
